@@ -81,15 +81,17 @@ function App() {
     return data;
   };
 
-  // useEffect(() => {
-  //   const fetchTasks = async()=>{
-  //     const res = await fetch ('http://localhost:5000/tasks')
-  //     const data = await res.json()
-  //     //console.log(data)
-  //     setTasks(data)
-  //   }
-  //   fetchTasks()
-  // }, [])
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const res = await fetch(
+        "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks"
+      );
+      const data = await res.json();
+      //console.log(data)
+      setTasks(data);
+    };
+    fetchTasks();
+  }, []);
 
   return (
     <Router>
