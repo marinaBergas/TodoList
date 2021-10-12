@@ -1,16 +1,10 @@
 {
   "tasks": [
     {
-      "text": "course start",
-      "day": "25-4-2021",
+      "text": "projects1",
+      "day": "20/10/2021",
       "reminder": false,
       "id": 1
-    },
-    {
-      "text": "start running",
-      "day": "26-2021",
-      "reminder": true,
-      "id": 2
     }
   ]
 }
