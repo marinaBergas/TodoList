@@ -12,9 +12,12 @@ function App() {
   const [tasks, setTasks] = useState([]);
   //delet task
   const DeleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: "DELETE",
-    });
+    await fetch(
+      `https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
@@ -22,13 +25,16 @@ function App() {
   const toggleReminder = async (id) => {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updTask),
-    });
+    const res = await fetch(
+      `https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updTask),
+      }
+    );
 
     const data = await res.json();
     setTasks(
@@ -40,7 +46,7 @@ function App() {
 
   const addTask = async (task) => {
     const res = await fetch(
-      "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks",
+      "https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks",
       {
         method: "POST",
         headers: {
@@ -51,9 +57,9 @@ function App() {
     );
     const data = await res.json();
     setTasks([...tasks, data]);
-    // const id = Math.floor(Math.random()*10000)+1
-    // const newTask={id,...task}
-    // setTasks([...tasks,newTask])
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = { id, ...task };
+    setTasks([...tasks, newTask]);
   };
 
   useEffect(() => {
@@ -67,7 +73,7 @@ function App() {
   //fetch tasks
   const fetchTasks = async () => {
     const res = await fetch(
-      "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks"
+      "https://my-json-server.typicode.com/marinaBergas/db/TodoList/db/tasks"
     );
     const data = await res.json();
     return data;
@@ -75,7 +81,7 @@ function App() {
   //fetch task
   const fetchTask = async (id) => {
     const res = await fetch(
-      `https://my-json-server.typicode.com/marinaBergas/TodoList/tasks/${id}`
+      `https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks/${id}`
     );
     const data = await res.json();
     return data;
@@ -84,7 +90,7 @@ function App() {
   useEffect(() => {
     const fetchTasks = async () => {
       const res = await fetch(
-        "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks"
+        "https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks"
       );
       const data = await res.json();
       //console.log(data)
