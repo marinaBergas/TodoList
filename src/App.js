@@ -13,7 +13,7 @@ function App() {
   //delet task
   const DeleteTask = async (id) => {
     await fetch(
-      `https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks/${id}`,
+      `https://my-json-server.typicode.com/marinaBergas/TodoList/tasks/${id}`,
       {
         method: "DELETE",
       }
@@ -26,7 +26,7 @@ function App() {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
     const res = await fetch(
-      `https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks/${id}`,
+      `https://my-json-server.typicode.com/marinaBergas/TodoList/tasks/${id}`,
       {
         method: "PUT",
         headers: {
@@ -46,7 +46,7 @@ function App() {
 
   const addTask = async (task) => {
     const res = await fetch(
-      "https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks",
+      "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks",
       {
         method: "POST",
         headers: {
@@ -73,7 +73,7 @@ function App() {
   //fetch tasks
   const fetchTasks = async () => {
     const res = await fetch(
-      "https://my-json-server.typicode.com/marinaBergas/db/TodoList/db/tasks"
+      "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks"
     );
     const data = await res.json();
     return data;
@@ -81,7 +81,7 @@ function App() {
   //fetch task
   const fetchTask = async (id) => {
     const res = await fetch(
-      `https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks/${id}`
+      `https://my-json-server.typicode.com/marinaBergas/TodoList/tasks/${id}`
     );
     const data = await res.json();
     return data;
@@ -90,7 +90,7 @@ function App() {
   useEffect(() => {
     const fetchTasks = async () => {
       const res = await fetch(
-        "https://my-json-server.typicode.com/marinaBergas/TodoList/db/tasks"
+        "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks/tasks"
       );
       const data = await res.json();
       //console.log(data)
