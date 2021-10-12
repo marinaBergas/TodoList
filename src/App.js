@@ -125,7 +125,7 @@ function App() {
               </>
             )}
           />
-          <about />
+          <About />
           <Footer />
         </div>
       </div>
