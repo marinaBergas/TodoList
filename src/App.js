@@ -90,7 +90,7 @@ function App() {
   useEffect(() => {
     const fetchTasks = async () => {
       const res = await fetch(
-        "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks/tasks"
+        "https://my-json-server.typicode.com/marinaBergas/TodoList/tasks"
       );
       const data = await res.json();
       //console.log(data)
